@@ -1,0 +1,74 @@
+<div class="col-md-12 user-container">
+    <h2 class="text-center">Add User</h2>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <!-- [ngClass]="{'has-error': addForm.get('firstName').errors && (addForm.get('firstName').touched
+        || addForm.get('firstName').dirty) }" -->
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" formControlName="firstName" placeholder="First Name"  class="form-control" id="firstName" required>
+        <span class="has-error" *ngIf="addForm.get('firstName').errors && (addForm.get('firstName').touched
+        || addForm.get('firstName').dirty)">
+            <span *ngIf="addForm.get('firstName').errors.required">
+              First name is required
+            </span>
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" formControlName="lastName" placeholder="Last name" class="form-control" id="lastName" required>
+        <span class="has-error" *ngIf="addForm.get('lastName').errors && (addForm.get('lastName').touched
+        || addForm.get('lastName').dirty)">
+            <span *ngIf="addForm.get('lastName').errors.required">
+              Last name is required
+            </span>
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="text" type="email" formControlName="email" placeholder="Email" class="form-control" id="email" required>
+        <span class="has-error" *ngIf="addForm.get('email').invalid && (addForm.get('email').touched
+        || addForm.get('email').dirty)">
+            <span class="has-error" *ngIf="addForm.get('email').errors?.required">
+              Email is required
+            </span>
+            <span class="has-error" *ngIf="addForm.get('email').errors?.email">
+              Email is invalid
+            </span>
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="advertisingMonthlyBudget">Advertising monthly budget:</label>
+        <input type="number" formControlName="advertisingMonthlyBudget" placeholder="Advertising monthly budget" class="form-control" id="advertisingMonthlyBudget" required>
+        <span class="has-error" *ngIf="addForm.get('advertisingMonthlyBudget').errors && (addForm.get('advertisingMonthlyBudget').touched
+        || addForm.get('advertisingMonthlyBudget').dirty)">
+            <span *ngIf="addForm.get('advertisingMonthlyBudget').errors.required">
+              Advertising monthly budget is required
+            </span>
+        </span>
+      </div>
+  
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="number" formControlName="phoneNumber" maxlength="10" minlength="10" placeholder="Phone Number" class="form-control" id="phoneNumber" required>
+        <span  *ngIf="addForm.get('phoneNumber').errors && (addForm.get('phoneNumber').touched
+        || addForm.get('phoneNumber').dirty)">
+            <span class="has-error" *ngIf="addForm.get('phoneNumber').errors.required">
+              Phone number is required
+            </span>
+            <span class="has-error" *ngIf="addForm.get('phoneNumber').errors?.pattern">
+              Phone number is min length is 10
+            </span>
+        </span>
+      </div>
+  
+      <button class="btn btn-success" type="submit" [disabled]="!addForm.valid" >Add</button>
+    </form>
+</div>
+
+  <!-- <mat-card>siffers
+
+  </mat-card> -->
+  
